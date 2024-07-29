@@ -8,10 +8,22 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^5.0.7"
+django-phonenumbers = "^1.0.1"
+django-phonenumber-field = "^8.0.0"
+python-dotenv = "^1.0.1"
+psycopg2-binary = "^2.9.9"
+pillow = "^10.4.0"
+stripe = "^10.5.0"
+smsaero-api = "^3.0.0"
 
 
 [tool.poetry.group.lint.dependencies]
 flake8 = "^7.1.0"
+
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^8.3.2"
+coverage = "^7.6.0"
 
 [build-system]
 requires = ["poetry-core"]
