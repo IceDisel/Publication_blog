@@ -1,0 +1,17 @@
+{% extends 'blog/base_template.html' %}
+{% block content %}
+
+
+
+<div class="container d-flex justify-content-center">
+    <div class = "text-center">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="my-0 font-weight-normal my-3">Оплата не прошла. Попробуйте снова.</h2>
+                   <a href="{% url 'users:payment_create' %}" class="btn btn-outline-primary my-3">К оплате</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

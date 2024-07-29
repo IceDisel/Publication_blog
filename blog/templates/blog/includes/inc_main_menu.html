@@ -1,0 +1,20 @@
+{% load my_tags %}
+
+<div class="container">
+
+    <nav class="ms-5">
+
+        {% if user.is_authenticated %}
+        <div class="mb-2">
+            <a class="p-2 btn btn-outline-primary btn-sm d-grid" href="{% url 'blog:list' %}">Мои публикации</a>
+        </div>
+        {% endif %}
+        <div class="mb-2">
+            <a class="p-2 btn btn-outline-primary btn-sm d-grid" href="{% url 'blog:post_list' %}">Публикации</a>
+        </div>
+        <div class="mb-2">
+            <a class="p-2 btn btn-outline-primary btn-sm d-grid" href="{% url 'blog:create' %}">Создать публикацию</a>
+        </div>
+
+    </nav>
+</div>

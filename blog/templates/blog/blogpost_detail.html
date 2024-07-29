@@ -1,0 +1,41 @@
+{% extends 'blog/base_template.html' %}
+{% block content %}
+{% load my_tags %}
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="col-10">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                    </div>
+                    <div class="card-body d-flex">
+                        <img src="{{ object.preview|my_media }}" width="300" height="300" class="img-thumbnail me-4"
+                             alt="{{ object.title }}">
+                        <div>{{ object.content }}</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <div class="text-start">Просмотров: {{ object.views_count }}</div>
+                            <div>Дата создания: {{ object.created_date }}</div>
+                            <div class="text-end">Автор: {{ object.author}}</div>
+                        </div>
+                        {% if object.author == user %}
+                        <div class="col-12 my-3">
+                            <a href="{% url 'blog:list' %}" class="btn btn-outline-primary">К моим публикациям</a>
+                        </div>
+                        {% else %}
+                        <div class="col-12 my-3">
+                            <a href="{% url 'blog:post_list' %}" class="btn btn-outline-primary">К публикациям</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

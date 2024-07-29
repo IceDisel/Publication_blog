@@ -1,0 +1,37 @@
+{% extends 'blog/base_template.html' %}
+{% load my_tags %}
+{% block content %}
+    <div class="container">
+
+        <h4>Просмотр публикаций других авторов.</h4>
+        {% if not user.is_premium %}
+
+        <p>для просмотра премиум публикаций <a href="{% url 'users:payment_create' %}">оплатите VIP подписку!</a></p>
+        {% endif %}
+
+        <div class="row text-center">
+
+            {% for object in object_list %}
+            <div class="col-4">
+                <div class="card mb-4 box-shadow my-3" style="height: 350px;">
+                    <div class="card-header">
+                        <img src="{{ object.preview|my_media }}" alt="object.name" width="240" height="160">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                    </div>
+
+                    <div class="card-footer d-flex align-items-center">
+                        <div>
+                            <a href="{% url 'blog:view' object.pk %}" class="btn btn-outline-primary mr-1">Просмотр</a>
+                        </div>
+                        <div class="card-body">
+                        <h6 class="my-0 font-weight-normal text-end">Автор: {{ object.author }}</h6>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
