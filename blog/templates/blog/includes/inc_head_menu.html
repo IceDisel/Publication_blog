@@ -1,0 +1,28 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-danger bg-light border-bottom box-shadow justify-content-between">
+    <div class="d-flex justify-content-center align-items-center">
+        <h3 class="my-0 mr-md-auto font-weight-normal mx-2">Joomag</h3>
+        <a class="p-2 btn btn-outline-primary btn-sm d-grid mx-2" href="{% url 'blog:index' %}">Главная</a>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="ml-auto d-flex">
+        <div class="d-flex justify-content-center align-items-center">
+            <a class="nav-link" href="{% url 'users:profile' %}">{{ user.nickname }}
+        {% if user.is_premium %}
+            - VIP
+        {% endif %}
+            </a>
+        </div>
+        <form action="{% url 'users:logout' %}" method="POST" class="ml-auto">
+            {% csrf_token %}
+            <button type="submit" class="p-2 btn btn-outline-primary btn-sm mx-2">Выход</button>
+        </form>
+
+    </div>
+    {% else %}
+    <div class="ml-auto d-flex">
+        <a class="p-2 btn btn-outline-primary btn-sm mx-2 align-self-end" href="{% url 'users:registration' %}">Регистрация</a>
+        <a class="p-2 btn btn-outline-primary btn-sm mx-2 align-self-end" href="{% url 'users:login' %}">Войти</a>
+    </div>
+    {% endif %}
+</div>
